@@ -57,7 +57,10 @@ print(merged_df2.info())
 
 print(merged_df2.describe())
 
-
+#Comparação entre média e mediana de “Alcohol use disorders (%)”
+print("\n--- Mean vs. Median: Alcohol use disorders (%) ---")
+print(f"Média Alcohol use disorders (%):  {merged_df2['Alcohol use disorders (%)'].mean():.2f}")
+print(f"Mediana Alcohol use disorders (%): {merged_df2['Alcohol use disorders (%)'].median():.2f}")
 
 # Handling Missing Data
 print("\nMissing Values per Column:")
@@ -135,6 +138,58 @@ time_spent_cumfreq = merged_df2["time_spent"].value_counts().sort_index().cumsum
 print("\nCumulative Frequency - Time spent on Social Media:")
 print(time_spent_cumfreq)
 
+#Linear Correlation between Time spent and Depression (%)
+corr_ts_depr = merged_df2[['time_spent', 'Depression (%)']].corr().iloc[0, 1]
+print(f"\nCorrelação entre time_spent e Depression (%): {corr_ts_depr:.2f}")
+
+#Discriptive statistics
+numeric_cols = [
+    "Schizophrenia (%)",
+    "Bipolar disorder (%)",
+    "Eating disorders (%)",
+    "Anxiety disorders (%)",
+    "Drug use disorders (%)",
+    "Depression (%)",
+    "Alcohol use disorders (%)",
+    "time_spent",
+    "income",
+    "Score"
+]
+
+for col in numeric_cols:
+    # Converter para numérico (se ainda restar alguma string inesperada)
+    merged_df2[col] = pd.to_numeric(merged_df2[col], errors='coerce')
+
+    print(f"\n--- Estatísticas descritivas para '{col}' ---")
+    print(f"Média:             {merged_df2[col].mean():.2f}")
+    print(f"Mediana:           {merged_df2[col].median():.2f}")
+    if not merged_df2[col].mode().empty:
+        print(f"Moda:              {merged_df2[col].mode()[0]:.2f}")
+    else:
+        print("Moda:              –")
+    print(f"Amplitude (Range): {merged_df2[col].max() - merged_df2[col].min():.2f}")
+    print(f"Variância:         {merged_df2[col].var():.2f}")
+    print(f"Desvio Padrão:     {merged_df2[col].std():.2f}")
+    q1 = merged_df2[col].quantile(0.25)
+    q3 = merged_df2[col].quantile(0.75)
+    print(f"IQR (Q3 – Q1):     {q3 - q1:.2f}")
+
+    # Histograma
+    plt.figure(figsize=(6, 4))
+    sns.histplot(merged_df2[col].dropna(), bins=20, kde=True, color="steelblue")
+    plt.title(f"Histograma de '{col}'")
+    plt.xlabel(col)
+    plt.ylabel("Frequência")
+    plt.grid(axis="y", alpha=0.3)
+    plt.tight_layout()
+    plt.show()
+
+    # Boxplot
+    plt.figure(figsize=(6, 2))
+    sns.boxplot(x=merged_df2[col].dropna(), color="lightgreen")
+    plt.title(f"Boxplot de '{col}'")
+    plt.tight_layout()
+    plt.show()
 
 # Bar chart for Age frequency
 plt.figure(figsize=(20,20))
