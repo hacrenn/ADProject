@@ -1,4 +1,4 @@
-ADProject — Análise de Dados
+*ADProject — Análise de Dados
 
 Descrição rápida ADProject é um projeto de análise de dados que investiga a relação entre indicadores de saúde mental (p.ex. depressão, ansiedade), tempo passado em redes sociais e medidas de bem-estar (p.ex. happiness index). O repositório contém um notebook interativo, um script que automatiza a cadeia de processamento, conjuntos de dados CSV e um relatório com metodologia e conclusões. Repositório: GitHub — Autor / mantenedor: hacrenn Tecnologias principais usadas: Python Software Foundation, Project Jupyter
 
