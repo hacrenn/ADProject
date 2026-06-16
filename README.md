@@ -1,49 +1,50 @@
 # Data Analysis Toolkit (Python)
 
-**Descrição rápida**
-ADProject é um projeto de análise de dados que investiga a relação entre indicadores de saúde mental (p.ex. depressão, ansiedade), tempo passado em redes sociais e medidas de bem-estar (p.ex. happiness index). O repositório contém um notebook interativo, um script que automatiza a cadeia de processamento, conjuntos de dados CSV e um relatório com metodologia e conclusões. Repositório: GitHub — Autor / mantenedor: hacrenn Tecnologias principais usadas: Python Software Foundation, Project Jupyter
+**Quick description**
+This is a data analysis project that investigates the relationship between mental health indicators (e.g., depression, anxiety), time spent on social media, and measures of well-being (e.g., happiness index). The repository contains an interactive notebook, a script that automates the processing chain, CSV datasets, and a report with methodology and conclusions. Repository: GitHub — Author/maintainer: hacrenn — Main technologies used: Python Software Foundation, Project Jupyter
 
 ---
 
-## Objetivo do projecto
+## Project objective
 
-O objetivo é demonstrar um fluxo completo de análise exploratória e visualização para responder perguntas como:
-* Existe correlação entre o tempo médio diário em redes sociais e taxas de depressão por país/idade?
-* Como evoluíram indicadores de ansiedade e depressão ao longo do tempo (temporalidade por país)?
-* Que grupos demográficos (idade/género) apresentam maior exposição a fatores de risco identificados?
-O foco é exploratório — identificar padrões, gerar visualizações esclarecedoras e propor hipóteses para análises estatísticas mais robustas.
-
----
-
-## Conteúdo do repositório (resumo dos ficheiros)
-
-* ProjetoAD.ipynb — Notebook Jupyter com o fluxo completo: leitura de dados, limpeza, fusão (merge), exploração e visualizações interativas.
-* ProjetoAD.py — Script Python que reproduz o pipeline do notebook de forma não interativa (útil para execução automática e geração de figuras/outputs).
-* RelatórioAD.pdf — Documento escrito com metodologia, resultados, interpretações e recomendações.
-* data/ (ou ficheiros CSV na raiz) — Conjunto de ficheiros CSV usados (prevalência de doenças mentais, tempo em redes sociais, indicadores socioeconómicos, happiness index, etc.).
-* docs/ (opcional) — Notas, gráficos exportados e ficheiros auxiliares usados para o relatório.
-Nota: alguns ficheiros no repositório podem conter caminhos absolutos; recomenda-se usar caminhos relativos e organizar todos os CSVs numa pasta data/ antes de executar o notebook ou o script.
+The objective is to demonstrate a complete exploratory analysis and visualization workflow to answer questions such as:
+* Is there a correlation between average daily time spent on social media and depression rates by country/age?
+* How have anxiety and depression indicators evolved over time (temporality by country)?
+* Which demographic groups (age/gender) have the greatest exposure to identified risk factors?
+The focus is exploratory—identifying patterns, generating enlightening visualizations, and proposing hypotheses for more robust statistical analyses.
 
 ---
 
-## Descrição dos dados e fontes
+## Repository contents (file summary)
 
-O projeto integra múltiplas fontes para construir uma base harmonizada por país/ano:
-* Dados de prevalência de transtornos mentais — percentuais por país/ano para depressão, ansiedade, etc.
-* Dados de utilização de redes sociais — métricas de tempo médio diário/semana por faixa etária/plataforma (quando disponível).
-* Indicadores de bem-estar — happiness index, PIB per capita, e outros fatores socioeconómicos de contexto.
-* Dados demográficos — distribuição por idade e género para estratificação.
-Sempre que possível, as fontes originais devem ser documentadas (fonte, ano, link). No RelatórioAD.pdf estão referenciadas as bases utilizadas e as transformações aplicadas.
+* ProjectAD.ipynb — Jupyter notebook with the complete workflow: data reading, cleaning, merging, exploration, and interactive visualizations.
+* ProjectAD.py — Python script that reproduces the notebook pipeline in a non-interactive way (useful for automatic execution and generation of figures/outputs).
+* ReportAD.pdf — Written document with methodology, results, interpretations, and recommendations.
+* data/ (or CSV files in the root) — Set of CSV files used (prevalence of mental illnesses, time spent on social networks, socioeconomic indicators, happiness index, etc.).
+* docs/ (optional) — Notes, exported graphs, and auxiliary files used for the report.
+Note: some files in the repository may contain absolute paths; it is recommended to use relative paths and organize all CSVs in a data/ folder before running the notebook or script.
 
 ---
 
-## Fluxo metodológico (alto nível)
+## Description of the data and sources
 
-1. Ingestão — carregar CSVs, inspecionar colunas e tipos de dados.
-2. Limpeza — harmonizar nomes de colunas, converter tipos (numérico / data), e lidar com valores em falta (missing values) e outliers.
-3. Harmonização — renomear colunas e mapear variáveis de diferentes fontes para um esquema comum (ex.: Entity→ Country).
-4. Merge / Join — combinar datasets por chaves (geralmente Country + Year), escolhendo estratégias de join que preservem observações relevantes.
-5. Transformação — criar variáveis derivadas (normalizações, percentis, categorizações por faixa etária).
-6. Exploração — estatísticas descritivas, correlações, pivot tables e visualizações (mapas coropléticos, séries temporais, scatter plots estratificados).
-7. Interpretação — sumarizar padrões observados, limitações e hipóteses para investigação adicional.
-As decisões de tratamento (p.ex. imputação de missing, remoção de outliers, escolha de agregação temporal) são descritas no relatório.
+The project integrates multiple sources to build a harmonized database by country/year:
+* Prevalence data for mental disorders — percentages by country/year for depression, anxiety, etc.
+* Social media usage data — metrics of average daily/weekly time spent by age group/platform (when available).
+* Well-being indicators — happiness index, GDP per capita, and other contextual socioeconomic factors.
+* Demographic data — distribution by age and gender for stratification.
+Whenever possible, the original sources should be documented (source, year, link). The databases used and the transformations applied are referenced in the AD Report.pdf.
+
+---
+
+## Methodological flow (high level)
+
+1. Ingestion — load CSVs, inspect columns and data types.
+2. Cleaning — harmonize column names, convert types (numeric/date), and handle missing values ​​and outliers.
+3. Harmonization — rename columns and map variables from different sources to a common schema (e.g., Entity → Country).
+4. Merge/Join — combine datasets by keys (usually Country + Year), choosing join strategies that preserve relevant observations.
+5. Transformation — create derived variables (normalizations, percentiles, age range categorizations).
+6. Exploration — descriptive statistics, correlations, pivot tables, and visualizations (choropleth maps, time series, stratified scatter plots).
+7. Interpretation — summarize observed patterns, limitations, and hypotheses for further investigation.
+
+The treatment decisions (e.g., imputation of missing data, removal of outliers, choice of temporal aggregation) are described in the report.
